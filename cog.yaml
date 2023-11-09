@@ -1,0 +1,21 @@
+# Configuration for Cog
+build:
+  gpu: true
+  python_version: "3.8"
+  python_packages:
+    - "torch==2.0.0"
+    - "diffusers==0.22.1"
+    - "transformers==4.35.0"
+    - "accelerate==0.24.1"
+    - "einops==0.7.0"
+    - "git+https://github.com/tencent-ailab/IP-Adapter.git"
+
+  run:
+    - git clone https://github.com/tencent-ailab/IP-Adapter.git /IP-Adapter
+    - cd /IP-Adapter && mkdir sdxl_models && cd sdxl_models && wget https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.bin
+    - cd /IP-Adapter && mkdir models && cd models && mkdir image_encoder && cd image_encoder && wget https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/config.json
+    - cd /IP-Adapter/models/image_encoder && wget https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors
+    - cd /IP-Adapter/models/image_encoder && wget https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/pytorch_model.bin
+
+# predict.py defines how predictions are run on your model
+predict: "predict.py:Predictor"
