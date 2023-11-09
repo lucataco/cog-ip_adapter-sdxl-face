@@ -8,7 +8,7 @@ First, download the pre-trained weights:
 
 Then, you can run predictions:
 
-    cog predict -i image=@ai_face2.png -i prompt="photo of a beautiful girl wearing casual shirt in a garden" -i seed=15251
+    cog predict -i image=@ai_face2.png -i prompt="photo of a beautiful girl wearing casual shirt in a garden" -i seed=42
 
 ## Example:
 
