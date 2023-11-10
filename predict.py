@@ -34,8 +34,7 @@ class Predictor(BasePredictor):
     def predict(
         self,
         image: Path = Input(
-             description="Input face image",
-             default=None
+             description="Input face image"
         ),
         prompt: str = Input(
             description="Prompt",
