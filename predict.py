@@ -45,6 +45,12 @@ class Predictor(BasePredictor):
             description="Negative Prompt",
             default=""
         ),
+        scale: float = Input(
+            description="Scale (influence of input image on generation)",
+            ge=0.0,
+            le=1.0,
+            default=0.6
+        ),
         num_outputs: int = Input(
             description="Number of images to output.",
             ge=1,
@@ -75,7 +81,8 @@ class Predictor(BasePredictor):
             num_inference_steps=num_inference_steps,
             seed=seed,
             prompt=prompt,
-            negative_prompt=negative_prompt
+            negative_prompt=negative_prompt,
+            scale=scale
         )
 
         output_paths = []
