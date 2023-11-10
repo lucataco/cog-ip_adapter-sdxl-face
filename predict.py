@@ -38,12 +38,12 @@ class Predictor(BasePredictor):
              default=None
         ),
         prompt: str = Input(
-            description="Prompt",
-            default="photo of a beautiful girl wearing casual shirt in a garden"
+            description="Prompt (leave blank for image variations)",
+            default=""
         ),
         negative_prompt: str = Input(
             description="Negative Prompt",
-            default="monochrome, lowres, bad anatomy, worst quality, low quality"
+            default=""
         ),
         num_outputs: int = Input(
             description="Number of images to output.",
