@@ -41,6 +41,10 @@ class Predictor(BasePredictor):
             description="Prompt",
             default="photo of a beautiful girl wearing casual shirt in a garden"
         ),
+        negative_prompt: str = Input(
+            description="Negative Prompt",
+            default=None
+        ),
         num_outputs: int = Input(
             description="Number of images to output.",
             ge=1,
@@ -70,7 +74,8 @@ class Predictor(BasePredictor):
             num_samples=num_outputs,
             num_inference_steps=num_inference_steps,
             seed=seed,
-            prompt=prompt
+            prompt=prompt,
+            negative_prompt=negative_prompt
         )
 
         output_paths = []
