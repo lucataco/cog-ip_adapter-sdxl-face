@@ -38,12 +38,18 @@ class Predictor(BasePredictor):
              default=None
         ),
         prompt: str = Input(
-            description="Prompt",
-            default="photo of a beautiful girl wearing casual shirt in a garden"
+            description="Prompt (leave blank for image variations)",
+            default=""
         ),
         negative_prompt: str = Input(
             description="Negative Prompt",
-            default="monochrome, lowres, bad anatomy, worst quality, low quality"
+            default=""
+        ),
+        scale: float = Input(
+            description="Scale (influence of input image on generation)",
+            ge=0.0,
+            le=1.0,
+            default=0.6
         ),
         num_outputs: int = Input(
             description="Number of images to output.",
@@ -75,7 +81,8 @@ class Predictor(BasePredictor):
             num_inference_steps=num_inference_steps,
             seed=seed,
             prompt=prompt,
-            negative_prompt=negative_prompt
+            negative_prompt=negative_prompt,
+            scale=scale
         )
 
         output_paths = []
